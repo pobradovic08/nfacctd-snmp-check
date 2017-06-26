@@ -10,6 +10,12 @@ Check process has tree components:
 
 Local check (`proc_check`) runs the simple bash command that counts number of proccesses that match a given argument (`nfacctd`).
 Output from this check is bound via SNMPD config to a custom (extended) OID that is polled by `nfacctd_check`.
+Example part of `snmpd.conf`:
+
+```
+extend nfacctd /usr/local/sbin/proc_check nfacctd
+```
+
 If the number of proccesses is zero, nfacctd server should be considered offline by the loadbalancer (KeepaliveD).
 This is done by KeepaliveD `MISC_CHECK` check. Example part of the `keepalived.conf` config for a real server using this check:
 ```
