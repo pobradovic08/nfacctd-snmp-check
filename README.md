@@ -23,3 +23,5 @@ real_server <ip_address> <port> {
 ```
 Since `nfacctd_check` exits with error if there's no running nfacctd proccess on `<nfacctd_server_hostname>`
 (or if there is some kind of SNMP error), the check will fail in those cases and exclude the real server from loadbalancing.
+
+This could be easily changed to check for any running proccess by changing the argument passed to `proc_check` in snmpd config.
